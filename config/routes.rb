@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   end
   resources :services
   resources :medicines
+  resources :doctors
   root to: "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

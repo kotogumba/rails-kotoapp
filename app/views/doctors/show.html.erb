@@ -1,0 +1,9 @@
+<div class="container">
+  <p><%= @doctor.first_name %> <%= @doctor.last_name %></p>
+</div>
+
+<div class="container">
+  <%= link_to "Змінити", edit_doctor_path(@doctor), class: "btn btn-primary" %>
+  <%= link_to "Видалити", doctor_path(@doctor), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-primary"%>
+  <%= link_to "Назад", doctors_path, class: "btn btn-primary" %>
+</div>

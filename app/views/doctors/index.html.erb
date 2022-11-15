@@ -1,0 +1,8 @@
+<div class="container">
+  <%@doctors.each do |doctor| %>
+    <%= doctor.first_name %> <%= doctor.last_name %>
+  <% end%>
+</div>
+<div class="container">
+  <%= link_to "Назад", root_path, class: "btn btn-primary" %>
+</div>

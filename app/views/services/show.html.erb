@@ -1,14 +1,17 @@
-<h2> Процедура </h2>
-<p> <%= "Patient: #{@service.client.first_name} #{@service.client.last_name}"%> </p>
-<p> <%= "Doctor: #{@service.doctor.first_name} #{@service.doctor.last_name}"%> </p>
-<p> <%= "Medicine: #{@service.medicine.title} #{@service.medicine.price}$"%> </p>
-<p> <%= "Date: #{@service.created_at}"%> </p>
+<div class="container">
+  <h2> <%= @service.medicine.title %></h2>
+  <p> <%= "Паціент: #{@service.client.first_name} #{@service.client.last_name}"%> </p>
+  <p> <%= "Доктор: #{@service.doctor.first_name} #{@service.doctor.last_name}"%> </p>
+  <p> <%= "Ціна:  #{@service.medicine.price}$"%> </p>
+  <p> <%= "Дата: #{@service.created_at}"%> </p>
+</div>
+<div class="container">
+  <%= link_to "Змінити", edit_service_path(@service), class: "btn btn-primary" %>
 
-<%= link_to "Edit", edit_service_path(@service) %>
+  <%= link_to "Видалити", service_path(@service), data: {
+                      turbo_method: :delete,
+                      turbo_confirm: "Are you sure?"
+                      }, class: "btn btn-primary" %>
 
-<%= link_to "Destroy", service_path(@service), data: {
-                    turbo_method: :delete,
-                    turbo_confirm: "Are you sure?"
-                    }%>
-
-<%= link_to "Back", services_path %>
+  <%= link_to "Назад", services_path, class: "btn btn-primary" %>
+</div>

@@ -4,7 +4,7 @@
     <a href="/services/<%=service.id%>" style="text-decoration: none"> <p> <%="#{service.created_at.strftime('%d/%m/%y %H:%M')} #{service.client.first_name} #{service.client.last_name} #{service.medicine.title} #{service.medicine.price}$"%> </p> </a>
   <% end %>
 
-  <%= link_to "New Service", new_service_path %>
-  <%= link_to "Back", root_path %>
+  <%# <%= link_to "New Service", new_service_path, class: "btn btn-primary" %> 
+  <%= link_to "Back", root_path, class: "btn btn-primary" %>
 
 </div>
