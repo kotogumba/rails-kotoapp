@@ -1,0 +1,17 @@
+
+<div class="container ">
+  <h1 class="border-bottom border-2"> Препарати </h2>
+  <ol>
+    <% @medicines.each do |medicine| %>
+    <li>
+      <a href="/medicines/<%=medicine.id%>" style="text-decoration: none">
+        <p>
+          <%= "#{medicine.title} #{medicine.price}$" %>
+        </p>
+      </a>
+    </li>
+    <% end %>
+  </ol>
+
+  <%= link_to "Додати", new_medicine_path, class: "btn btn-primary" %>
+</div>

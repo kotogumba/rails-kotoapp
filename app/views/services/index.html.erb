@@ -1,0 +1,10 @@
+<div class= "container">
+  <h1 class="border-bottom border-2"> Процедури </h1>
+  <% @services.each do |service| %>
+    <a href="/services/<%=service.id%>" style="text-decoration: none"> <p> <%="#{service.created_at.strftime('%d/%m/%y %H:%M')} #{service.client.first_name} #{service.client.last_name} #{service.medicine.title} #{service.medicine.price}$"%> </p> </a>
+  <% end %>
+
+  <%= link_to "New Service", new_service_path %>
+  <%= link_to "Back", root_path %>
+
+</div>

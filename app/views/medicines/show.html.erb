@@ -1,0 +1,10 @@
+<div class="container">
+  <h2 class="border-bottom border-2 mb-3"><%= @medicine.title %></h2>
+  <p><%= 'Ціна ' + @medicine.price.to_s%></p>
+  <p><%=  @medicine.description %></p>
+  <p><%= 'Кількість: '+@medicine.quantity.to_s %></p>
+</div>
+<div class="container">
+  <%= link_to "Змінити", edit_medicine_path(@medicine), class: "btn btn-primary" %>
+  <%= link_to "Назад", medicines_path, class: "btn btn-primary" %>
+</div>

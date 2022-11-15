@@ -1,0 +1,14 @@
+<h2> Процедура </h2>
+<p> <%= "Patient: #{@service.client.first_name} #{@service.client.last_name}"%> </p>
+<p> <%= "Doctor: #{@service.doctor.first_name} #{@service.doctor.last_name}"%> </p>
+<p> <%= "Medicine: #{@service.medicine.title} #{@service.medicine.price}$"%> </p>
+<p> <%= "Date: #{@service.created_at}"%> </p>
+
+<%= link_to "Edit", edit_service_path(@service) %>
+
+<%= link_to "Destroy", service_path(@service), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                    }%>
+
+<%= link_to "Back", services_path %>

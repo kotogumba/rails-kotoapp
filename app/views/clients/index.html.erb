@@ -1,0 +1,13 @@
+<div class= "container">
+  <h1 class="border-bottom border-2"> Паціенти </h1>
+  <ol>
+  <% @clients.each do |client| %>
+
+    <li><a href="/clients/<%=client.id%>" style="text-decoration: none"> <p> <%= "#{client.first_name} #{client.last_name}"%> </p> </a></li>
+  <% end %>
+</div>
+<div class="container">
+  <%= link_to "Новий паціент", new_client_path, class: "btn btn-primary" %>
+  <%= link_to "Назад", root_path, class: "btn btn-primary" %>
+
+</div>

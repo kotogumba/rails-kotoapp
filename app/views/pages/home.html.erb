@@ -1,2 +1,8 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="container">
+  <div class="border-bottom border-2 mb-3">
+    <h1>Добрий день доктор Чумаченко</h1>
+  </div>
+  <%= link_to "Паціенти", clients_path, class: "btn btn-primary"%>
+  <%= link_to "Процедури", services_path, class: "btn btn-primary" %>
+  <%= link_to "Препарати", medicines_path, class: "btn btn-primary" %>
+</div>

@@ -1,0 +1,14 @@
+
+<div class="container">
+  <h2><%= @client.first_name %> <%= @client.last_name %></h2>
+  <% @client.services.all.each do |service| %>
+    <a href="/services/<%=service.id%>"><p><%= "#{service.created_at.strftime('%d/%m/%y %H:%M')} - #{service.medicine.title}" %></p></a>
+  <% end %>
+ </div>
+ <div class="container">
+  <p> <%= link_to "Додати процедуру",  new_service_path(client_id: @client.id), class: "btn btn-warning" %> </p>
+  <%= link_to "Змінити", edit_client_path(@client), class: "btn btn-primary" %>
+  <%= link_to "Видалити", client_path(@client), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-primary"%>
+
+  <%= link_to "Назад", clients_path, class: "btn btn-primary" %>
+ </div>
