@@ -2,7 +2,7 @@
 <div class="container">
   <h2><%= @client.first_name %> <%= @client.last_name %></h2>
   <% @client.services.all.each do |service| %>
-    <a href="/services/<%=service.id%>"><p><%= "#{service.created_at.getlocal.strftime('%d/%m/%y %H:%M')} - #{service.medicine.title}" %></p></a>
+    <a href="/services/<%=service.id%>"><p><%= "#{(service.created_at + 7200).strftime('%d/%m/%y %H:%M')} - #{service.medicine.title}" %></p></a>
   <% end %>
  </div>
  <div class="container">
