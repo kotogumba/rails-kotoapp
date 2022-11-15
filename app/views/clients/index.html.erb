@@ -1,11 +1,34 @@
-<div class= "container">
-  <h1 class="border-bottom border-2"> Паціенти </h1>
-  <ol>
-  <% @clients.each do |client| %>
+<%#
+  <h1 class="border-bottom border-2 "> Паціенти </h1>
+  <nav class="navbar bg-light">
+    <div class="container-fluid">
+      <form class="d-flex" role="search" action="/clients/search" method="get">
+        <input name="query" id="query" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </nav>
+ %>
 
-    <li><a href="/clients/<%=client.id%>" style="text-decoration: none"> <p> <%= "#{client.first_name} #{client.last_name}"%> </p> </a></li>
-  <% end %>
-</div>
+ <%= form_with url: clients_path, method: :get, class: "d-flex" do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Find a movie"
+  %>
+  <%= submit_tag "Search", class: "btn btn-primary" %>
+<% end %>
+
+
+<div class= "container">
+  <div>
+    <ol>
+    <% @clients.each do |client| %>
+
+      <li><a href="/clients/<%=client.id%>" style="text-decoration: none"> <p> <%= "#{client.first_name} #{client.last_name}"%> </p> </a></li>
+    <% end %>
+  </div>
+  </div>
 <div class="container">
   <%= link_to "Новий паціент", new_client_path, class: "btn btn-primary" %>
   <%= link_to "Назад", root_path, class: "btn btn-primary" %>
