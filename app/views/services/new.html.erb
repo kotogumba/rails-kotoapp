@@ -15,6 +15,10 @@
     <%= f.button :submit, value: "Підтвердити", class: "btn btn-primary" %>
   <% end %>
   <div class="pt-3">
-    <%= link_to 'Назад', services_path, class: "btn btn-primary" %>
+    <% if @client_id %>
+      <%= link_to "Назад", client_path(@client_id), class: "btn btn-primary" %>
+    <% else %>
+      <%= link_to "Назад", clients_path, class: "btn btn-primary" %>
+    <% end %>
   </div>
 </div>
