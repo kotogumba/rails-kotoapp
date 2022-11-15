@@ -3,7 +3,7 @@
   <p> <%= "Паціент: #{@service.client.first_name} #{@service.client.last_name}"%> </p>
   <p> <%= "Доктор: #{@service.doctor.first_name} #{@service.doctor.last_name}"%> </p>
   <p> <%= "Ціна:  #{@service.medicine.price}$"%> </p>
-  <p> <%= "Дата: #{@service.created_at}"%> </p>
+  <p> <%= "Дата: #{@service.created_at.localtime}"%> </p>
 </div>
 <div class="container">
   <%= link_to "Змінити", edit_service_path(@service), class: "btn btn-primary" %>
