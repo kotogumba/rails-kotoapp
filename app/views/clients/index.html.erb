@@ -16,8 +16,7 @@
           <div class="card" style="width: 18rem;">
              <% client.photos.each do |photo| %>
                 <% if photo.id == 1 %>
-                  <%= cl_image_tag photo.key, :transformation =>
-    { :dpr => "auto", :responsive => true, :width => "auto", :crop => "scale"} %>
+                  <%= cl_image_tag photo.key, :transformation => { :dpr => "auto", :responsive => true, :width => "auto", :crop => "scale"} %>
                 <% end %>
               <% end %>
             <div class="card-body">
