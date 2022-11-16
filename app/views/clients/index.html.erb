@@ -14,9 +14,6 @@
       <% @clients.each do |client| %>
         <div class="col">
           <div class="card" style="width: 18rem;">
-             <% client.photos.each do |photo| %>
-               <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill, :transformation => { :dpr => "auto", :responsive => true, :width => "auto", :crop => "scale"} %>
-             <% end %>
             <div class="card-body">
               <h5 class="card-title"><%= "#{client.first_name}  #{client.last_name}" %></h5>
               <p class="card-text"><%= "#{client.phone} " %></p>
