@@ -1,8 +1,12 @@
 
 <div class="container">
-  <h2><%= @client.first_name %> <%= @client.last_name %></h2>
+  <h2 class="border-bottom"><%= @client.first_name %> <%= @client.last_name %></h2>
   <h5> Процедури: </h5>
-  <div class="overflow-auto border p-2 mb-3" style="height: 200px; width: 400px">
+  <% @client.photos.each do |photo| %>
+    <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+  <% end %>
+  <%= render "form"%>
+  <div class="overflow-auto border p-2 mb-3 bg-white rounded" style="height: 200px; width: 400px">
     <% @client.services.all.each_with_index do |service, index| %>
       <a href="/services/<%=service.id%>"><p><%= "#{index + 1} - #{(service.created_at + 7200).strftime('%d/%m/%y %H:%M')} - #{service.medicine.title}" %></p></a>
     <% end %>

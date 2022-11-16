@@ -14,7 +14,12 @@
       <% @clients.each do |client| %>
         <div class="col">
           <div class="card" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
+             <% client.photos.each do |photo| %>
+                <% if photo.id == 1 %>
+                  <%= cl_image_tag photo.key, :transformation =>
+    { :dpr => "auto", :responsive => true, :width => "auto", :crop => "scale"} %>
+                <% end %>
+              <% end %>
             <div class="card-body">
               <h5 class="card-title"><%= "#{client.first_name}  #{client.last_name}" %></h5>
               <p class="card-text"><%= "#{client.phone} " %></p>
