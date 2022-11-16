@@ -14,6 +14,10 @@
       <% @clients.each do |client| %>
         <div class="col">
           <div class="card" style="width: 18rem;">
+             <%# first client photo %>
+            <% if client.photos.any? %>
+              <%= cl_image_tag client.photos.first.key, height: 300, width: 400, crop: :fit %>
+            <% end %>
             <div class="card-body">
               <h5 class="card-title"><%= "#{client.first_name}  #{client.last_name}" %></h5>
               <p class="card-text"><%= "#{client.phone} " %></p>
