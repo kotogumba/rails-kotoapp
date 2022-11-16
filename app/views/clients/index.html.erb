@@ -1,6 +1,6 @@
 
 <div class="container mb-3">
-  <%= form_with url: clients_path, method: :get, class: "d-flex" do %>
+  <%= form_with url: clients_path, method: :get, class: "d-flex w-50 m-3" do %>
     <%= text_field_tag :query,
       params[:query],
       class: "form-control",
@@ -8,17 +8,32 @@
     <%= submit_tag "Search", class: "btn btn-primary" %>
   <% end %>
 </div>
-
-
+<div class="container">
+  <div class="card-group m-3">
+    <div class="row g-4">
+      <% @clients.each do |client| %>
+        <div class="col">
+          <div class="card" style="width: 18rem;">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title"><%= "#{client.first_name}  #{client.last_name}" %></h5>
+              <p class="card-text"><%= "#{client.phone} " %></p>
+              <a href="/clients/<%=client.id%>" class="btn btn-success">Детальніше</a>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
 <div class= "container">
   <div>
     <ol>
     <% @clients.each do |client| %>
-
       <li><a href="/clients/<%=client.id%>" style="text-decoration: none"> <p> <%= "#{client.first_name} #{client.last_name}"%> </p> </a></li>
     <% end %>
   </div>
-  </div>
+</div>
 <div class="container">
   <%= link_to "Новий паціент", new_client_path, class: "btn btn-primary" %>
   <%= link_to "Назад", root_path, class: "btn btn-primary" %>
