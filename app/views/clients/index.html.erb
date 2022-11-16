@@ -1,23 +1,13 @@
-<%#
-  <h1 class="border-bottom border-2 "> Паціенти </h1>
-  <nav class="navbar bg-light">
-    <div class="container-fluid">
-      <form class="d-flex" role="search" action="/clients/search" method="get">
-        <input name="query" id="query" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
-    </div>
-  </nav>
- %>
 
- <%= form_with url: clients_path, method: :get, class: "d-flex" do %>
-  <%= text_field_tag :query,
-    params[:query],
-    class: "form-control",
-    placeholder: "Find a movie"
-  %>
-  <%= submit_tag "Search", class: "btn btn-primary" %>
-<% end %>
+<div class="container mb-3">
+  <%= form_with url: clients_path, method: :get, class: "d-flex" do %>
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+      placeholder: "Пошук пацієнта" %>
+    <%= submit_tag "Search", class: "btn btn-primary" %>
+  <% end %>
+</div>
 
 
 <div class= "container">
