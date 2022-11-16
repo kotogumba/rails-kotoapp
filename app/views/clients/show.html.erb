@@ -3,7 +3,7 @@
   <h2 class="border-bottom"><%= @client.first_name %> <%= @client.last_name %></h2>
   <h5> Процедури: </h5>
   <% @client.photos.each do |photo| %>
-    <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+    <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill, :transformation => { :dpr => "auto", :responsive => true, :width => "auto", :crop => "scale"} %>
   <% end %>
   <%= render "form"%>
   <div class="overflow-auto border p-2 mb-3 bg-white rounded" style="height: 200px; width: 400px">
