@@ -3,6 +3,12 @@
     <%= link_to "#", class: "navbar-brand" do %>
      <h3>@drchumachenko</h3> <%# <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
     <% end %>
+    <% url = "https://api.privatbank.ua/p24api/pubinfo?exchange&coursid=5" %>
+    <% user_serialized = URI.open(url).read %>
+    <% user = JSON.parse(user_serialized) %>
+    <div class="text-center">
+      <p><%= "#{user[1]['ccy']}/#{user[1]['base_ccy']} #{user[1]['buy'].to_f.round(2)}/#{user[1]['sale'].to_f.round(2)}"%> </p>
+    </div>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>

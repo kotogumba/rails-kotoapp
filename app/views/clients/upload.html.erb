@@ -1,0 +1,5 @@
+<%# uplod photo %>
+<%= simple_form_for [@client] do |f| %>
+  <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+  <%= f.button :submit %>
+<% end %>
