@@ -8,4 +8,4 @@ class Client < ApplicationRecord
   has_many_attached :photos
 end
 
-# Client.reindex!
+Client.reindex!
