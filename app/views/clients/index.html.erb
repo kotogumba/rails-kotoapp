@@ -1,5 +1,5 @@
 
-<div class="container border">
+<div class="container">
   <div class="row">
     <div class="col-12">
       <%= form_with url: clients_path, method: :get, class: "d-flex mb-3" do %>
@@ -13,12 +13,16 @@
   </div>
 </div>
 
-<div class="container border">
+<div class="container mb-3">
+  <%= link_to "Новий паціент", new_client_path, class: "btn btn-warning" %>
+</div>
+
+<div class="container overflow-auto" style="height: 100vh;">
   <div class="row row-cols-auto">
     <% @clients.each do |client| %>
       <div class="col">
         <% if client.photos.any? %>
-        <div class="border mb-3 pt-2 d-flex flex-column justify-content-between align-items-center" style="width: 170px; height: 230px;">
+        <div class="border mb-1 pt-2 d-flex flex-column justify-content-between align-items-center" style="width: 170px; height: 230px;">
           <a href="/clients/<%=client.id%>">
             <%= cl_image_tag client.photos.first.key, class: "flex-grow-2", width: "150px;" %>
           </a>
@@ -29,17 +33,17 @@
     <% end %>
   </div>
 </div>
-
-<div class= "container">
-  <div>
-    <ol>
-    <% @clients.each do |client| %>
-      <li><a href="/clients/<%=client.id%>" style="text-decoration: none"> <p> <%= "#{client.first_name} #{client.last_name}"%> </p> </a></li>
-    <% end %>
+<% if false %>
+  <div class= "container">
+    <div>
+      <ol>
+      <% @clients.each do |client| %>
+        <li><a href="/clients/<%=client.id%>" style="text-decoration: none"> <p> <%= "#{client.first_name} #{client.last_name}"%> </p> </a></li>
+      <% end %>
+    </div>
   </div>
-</div>
-<div class="container">
-  <%= link_to "Новий паціент", new_client_path, class: "btn btn-primary" %>
-  <%= link_to "Назад", root_path, class: "btn btn-primary" %>
 
-</div>
+<% end %>
+<div class="container">
+    <%= link_to "Назад", root_path, class: "btn btn-primary" %>
+  </div>
