@@ -14,7 +14,7 @@
     <% @clients.each do |client| %>
       <div class="col">
         <% if client.photos.any? %>
-        <div class="border" style="width: 100px">
+        <div class="border mb-3" style="width: 100px; height: 150px;">
           <a href="/clients/<%=client.id%>">
             <%= cl_image_tag client.photos.first.key, width: "100px;" %>
           </a>
