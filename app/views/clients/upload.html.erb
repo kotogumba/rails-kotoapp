@@ -1,5 +1,12 @@
 <%# uplod photo %>
-<%= simple_form_for [@client] do |f| %>
-  <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-  <%= f.button :submit %>
-<% end %>
+<div class="container mb-3">
+  <div style="width: 400px;">
+    <%= simple_form_for [@client] do |f| %>
+      <%= f.input :photos, label: "Виберіть фото:", as: :file, input_html: { multiple: true } %>
+      <%= f.button :submit, value: "Додати", class: "btn btn-warning" %>
+    <% end %>
+  </div>
+</div>
+<div class="container">
+  <%= link_to "Назад", client_path(@client), class: "btn btn-primary" %>
+</div>

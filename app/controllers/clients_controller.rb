@@ -7,6 +7,11 @@ class ClientsController < ApplicationController
     end
   end
 
+  def client_photos
+    @client = Client.find(params[:id])
+    @photos = @client.photos
+  end
+
   def upload
     @client = Client.find(params[:id])
     render :upload

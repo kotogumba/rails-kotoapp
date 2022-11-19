@@ -1,0 +1,21 @@
+<div class="container">
+  <% if @client.photos.any? %>
+    <% @client.photos.each do |photo| %>
+      <div class="col">
+        <div class="card " style="width: 10rem;">
+        <%# first client photo %>
+          <%= cl_image_tag photo.key, class: "card-img-top", height: "150px;" %>
+          <div class="card-body">
+            <p class="card-text"><%= photo.created_at %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+
+</div>
+
+<div class="container">
+  <%= link_to "Назад", client_path(@client), class: "btn btn-primary" %>
+  <%= link_to "Додати фото", "upload", class: "btn btn-primary" %>
+</div>
