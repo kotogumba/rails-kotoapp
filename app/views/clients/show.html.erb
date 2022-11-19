@@ -6,13 +6,13 @@
     <div class="row">
       <div class="col border">
 
-        <div class="card-group m-3">
-          <div class="row g-4 overflow-auto">
+        <div class="container">
+          <div class="row row-cols-auto">
             <% if @client.photos.any? %>
               <% @client.photos.first(3).each do |photo| %>
                 <div class="col">
-                  <div class="card " style="width: 10rem;">
-                    <%= link_to cl_image_tag(photo.key, class: "card-img-top", height: "150px;"), photo %>
+                  <div class="d-flex flex-column justify-content-center align-items-center mb-3" style="background-color:white;">
+                    <%= link_to cl_image_tag(photo.key, width: 180, crop: :fill), photo %>
                     <div class="card-body">
                       <p class="card-text"><%= (photo.created_at + 7200).strftime('%d/%m/%y %H:%M') %></p>
                     </div>
