@@ -1,0 +1,17 @@
+.fab-container {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  transition: all 0.3s ease-in-out;
+}
+#add-button {
+  color: red;
+  width: 56px;
+  height: 56px;
+  margin: 16px;
+}
+
+.fab-container:hover {
+  color: blue;
+  transform: scale(1.2) rotate(-45deg);
+}
