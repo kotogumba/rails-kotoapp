@@ -13,8 +13,10 @@
   </div>
 </div>
 
-<div class="container mb-3">
-  <%= link_to "Новий паціент", new_client_path, class: "btn btn-warning" %>
+<div class="container mb-3 d-flex justify-content-end">
+
+  <%= link_to '<i class="fa-solid fa-circle-plus"></i>'.html_safe, new_client_path, style: "font-size:50px;" %>
+
 </div>
 
 <div class="container">
