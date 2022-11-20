@@ -25,6 +25,10 @@
         <div class="d-flex flex-row mb-3 ">
           <%= link_to "Усі фото", "#{@client.id}/client_photos", class: "btn btn-primary me-1", style: "width: 100px;"%>
           <%= link_to "Додати процедуру",  new_service_path(client_id: @client.id), class: "btn btn-warning" %>
+          <%= link_to "Видалити", client_path(@client), data: {
+            turbo_method: :delete,
+            turbo_confirm: "Are you sure?"
+            }, class: "btn btn-danger ms-1" %>
         </div>
       </div>
 

@@ -6,5 +6,9 @@
 </div>
 <div class="container">
   <%= link_to "Змінити", edit_medicine_path(@medicine), class: "btn btn-primary" %>
+  <%= link_to "Видалити", medicine_path(@medicine), data: {
+                      turbo_method: :delete,
+                      turbo_confirm: "Are you sure?"
+                      }, class: "btn btn-primary" %>
   <%= link_to "Назад", medicines_path, class: "btn btn-primary" %>
 </div>
