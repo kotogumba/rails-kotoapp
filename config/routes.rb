@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :services
   resources :medicines
   resources :doctors
+  resources :zones
   root to: "pages#home"
   get "clients/:id/upload", to: "clients#upload"
   get "clients/:id/client_photos", to: "clients#client_photos"

@@ -1,0 +1,9 @@
+<div class="container">
+  <%@zones.each do |zone| %>
+    <%= zone.title %>
+  <% end%>
+</div>
+<div class="container">
+  <%= link_to "Назад", root_path, class: "btn btn-primary" %>
+  <%= link_to "Додати", new_zone_path, class: "btn btn-primary" %>
+</div>
