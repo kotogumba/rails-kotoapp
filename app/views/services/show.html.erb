@@ -1,9 +1,11 @@
 <div class="container">
-  <h2> <%= @service.medicine.title %></h2>
+  <h2> <%= @service.zone.title %> </h2>
+  <h4> <%= "Препарат: #{@service.medicine.title}"%></h4>
+  <p> <%= "Кількість: #{@service.quantity}"%> </p>
   <p> <%= "Паціент: #{@service.client.first_name} #{@service.client.last_name}"%> </p>
   <p> <%= "Доктор: #{@service.doctor.first_name} #{@service.doctor.last_name}"%> </p>
-  <p> <%= "Ціна:  #{@service.medicine.price}$"%> </p>
-  <p> <%= "Дата: #{@service.created_at.localtime}"%> </p>
+  <p> <%= "Коментарій: #{@service.comment}"%> </p>
+  <p> <%= "Дата: #{@service.created_at.localtime.strftime('%d/%m/%y %H:%M')}"%> </p>
 </div>
 <div class="container">
   <%= link_to "Змінити", edit_service_path(@service), class: "btn btn-primary" %>
@@ -13,5 +15,5 @@
                       turbo_confirm: "Are you sure?"
                       }, class: "btn btn-primary" %>
 
-  <%= link_to "Назад", services_path, class: "btn btn-primary" %>
+  <%= link_to "Назад", client_path(@service.client), class: "btn btn-primary" %>
 </div>

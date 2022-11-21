@@ -5,6 +5,10 @@ class ServicesController < ApplicationController
 
   def show
     @service = Service.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.json { render json: @service }
+    end
   end
 
   def new
@@ -44,6 +48,6 @@ class ServicesController < ApplicationController
   private
 
   def service_params
-    params.require(:service).permit(:client_id, :doctor_id, :medicine_id, )
+    params.require(:service).permit(:client_id, :doctor_id, :medicine_id, :zone_id, :title, :comment, :quantity)
   end
 end

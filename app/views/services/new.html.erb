@@ -1,8 +1,7 @@
-<div class="container p-3">
-  <%= simple_form_for [@service] do |f| %>
-    <%# choose from doctors in input  %>
-    <%= f.input :doctor_id, label: "Лікар", :collection => Doctor.all.map{|u| [u.first_name + ' ' + u.last_name, u.id]} %>
-
+<div class="container p-3" data-controller="form">
+  <%= simple_form_for [@service], html: {data: {form_target: 'form-total'}}  do |f| %>
+    <%# choose from doctors in input with first name and last name %>
+    <%= f.input :doctor_id, label: "Лікар", collection: Doctor.all.map {|d| ["#{d.first_name} #{d.last_name}", d.id]} %>
     <%# @client_id as default value in input%>
     <% if @client_id %>
       <%= f.input :client_id, :as => :hidden, :input_html => { :value => @client_id } %>
@@ -10,13 +9,16 @@
       <%= f.input :client_id,:collection => Client.all.map{|u| [u.first_name + ' ' + u.last_name, u.id]} %>
     <% end %>
 
-    <%=  f.input :medicine_id, label: "Препарат",:collection => Medicine.all.map{|u| [u.title, u.id]} %>
+    <%# input has data-target attribute for stimulus %>
+    <%= f.input :zone_id, class: "form-control", label: "Зона", :collection => Zone.all.map{|u| [u.title, u.id]}, input_html: {data: {form_target: 'zone', action: "change->form#input"}} %>
+    <%= f.input :medicine_id, class: "form-control", label: "Препарат", :collection => Medicine.all.map{|u| [u.title, u.id]}, input_html: {data: {form_target: 'medicine'}} %>
+
     <%= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %>
-    <%= f.input :zone_id, label: "Зона", :collection => Zone.all.map{|u| [u.title, u.id]} %>
     <%= f.input :quantity, label: "Кількість" %>
     <%= f.input :comment, label: "Коментарій" %>
     <%= f.button :submit, value: "Підтвердити", class: "btn btn-primary" %>
   <% end %>
+
   <div class="pt-3">
     <% if @client_id %>
       <%= link_to "Назад", client_path(@client_id), class: "btn btn-primary" %>

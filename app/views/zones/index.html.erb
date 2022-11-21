@@ -1,8 +1,9 @@
-<div class="container">
+<div class="container mb-3 d-flex flex-column">
   <%@zones.each do |zone| %>
-    <%= zone.title %>
+    <%= link_to zone.title, zone_path(zone) %>
   <% end%>
 </div>
+
 <div class="container">
   <%= link_to "Назад", root_path, class: "btn btn-primary" %>
   <%= link_to "Додати", new_zone_path, class: "btn btn-primary" %>

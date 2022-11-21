@@ -5,7 +5,7 @@ const url='https://api.privatbank.ua/p24api/pubinfo?exchange&coursid=5'
 
 export default class extends Controller {
   connect() {
-    this.element.textContent = "Hello World!"
+    console.log("Hello, Stimulus!", this.element)
   }
 
 

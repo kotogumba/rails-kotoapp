@@ -3,7 +3,14 @@
   <%= @zone.description %>
 </div>
 <div class="container">
-  <%= link_to "Змінити", edit_doctor_path(@doctor), class: "btn btn-primary" %>
-  <%= link_to "Видалити", doctor_path(@doctor), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-primary"%>
-  <%= link_to "Назад", doctors_path, class: "btn btn-primary" %>
+  <% @zone.medicines.each do |medicine| %>
+    <%= medicine.title %>
+  <% end %>
+</div>
+<%# add connection to medicine %>
+
+<div class="container">
+  <%= link_to "Змінити", edit_zone_path(@zone), class: "btn btn-primary" %>
+  <%= link_to "Видалити", zone_path(@zone), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-primary"%>
+  <%= link_to "Назад", zones_path, class: "btn btn-primary" %>
 </div>

@@ -5,6 +5,19 @@ class ZonesController < ApplicationController
 
   def show
     @zone = Zone.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.json { render json: @zone }
+    end
+  end
+
+  def medicines
+    @zone = Zone.find(params[:id])
+    @medicines = @zone.medicines
+    respond_to do |format|
+      format.html
+      format.json { render json: @medicines }
+    end
   end
 
   def new
@@ -26,6 +39,7 @@ class ZonesController < ApplicationController
 
   def update
     @zone = Zone.find(params[:id])
+    @zone.medicines << Medicine.find(params[:zone][:medicines])
     if @zone.update(zone_params)
       redirect_to @zone
     else
