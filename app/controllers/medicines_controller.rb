@@ -18,7 +18,11 @@ class MedicinesController < ApplicationController
 
   def create
     @medicine = Medicine.new(medicine_params)
-    @medicine.zones << Zone.find(params[:medicine][:zones])
+    @zones_id_array = params[:medicine][:zones]
+    @zones_id_array.each do |zone_id|
+      @zone = Zone.find(zone_id)
+      @medicine.zones << @zone
+    end
     if @medicine.save
       redirect_to @medicine
     else
@@ -49,7 +53,7 @@ class MedicinesController < ApplicationController
   private
 
   def medicine_params
-    params.require(:medicine).permit(:title, :description, :price, :quantity)
+    params.require(:medicine).permit(:title, :description, :price, :quantity, :zones)
   end
 
 end
