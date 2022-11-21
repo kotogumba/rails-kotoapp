@@ -2,7 +2,9 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon" data-controller="navbar">
   <div class="container-fluid">
     <%= link_to "@drchumachenko", root_path, class: "navbar-brand" %>
-
+    <% url = "https://api.privatbank.ua/p24api/pubinfo?exchange&coursid=5"%>
+    <% user_serialized = URI.open(url).read%>
+    <% user = JSON.parse(user_serialized)%>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -37,8 +39,8 @@
       </ul>
     </div>
     <div class="text-start">
-      <p class="h6"><%= "#{@user[1]['ccy']}/#{@user[1]['base_ccy']} #{@user[1]['buy'].to_f.round(2)}/#{@user[1]['sale'].to_f.round(2)}"%> </p>
-      <p class="h6"><%= "#{@user[0]['ccy']}/#{@user[0]['base_ccy']} #{@user[0]['buy'].to_f.round(2)}/#{@user[0]['sale'].to_f.round(2)}"%> </p>
+      <p class="h6"><%= "#{user[1]['ccy']}/#{user[1]['base_ccy']} #{user[1]['buy'].to_f.round(2)}/#{user[1]['sale'].to_f.round(2)}"%> </p>
+      <p class="h6"><%= "#{user[0]['ccy']}/#{user[0]['base_ccy']} #{user[0]['buy'].to_f.round(2)}/#{user[0]['sale'].to_f.round(2)}"%> </p>
     </div>
 
   </div>
