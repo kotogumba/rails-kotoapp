@@ -7,12 +7,18 @@ class MedicinesController < ApplicationController
     @medicine = Medicine.find(params[:id])
   end
 
+  def zones
+    @medicine = Medicine.find(params[:id])
+    @zones = @medicine.zones
+  end
+
   def new
     @medicine = Medicine.new
   end
 
   def create
     @medicine = Medicine.new(medicine_params)
+    @medicine.zones << Zone.find(params[:medicine][:zones])
     if @medicine.save
       redirect_to @medicine
     else

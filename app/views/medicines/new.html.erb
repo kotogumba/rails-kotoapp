@@ -1,6 +1,7 @@
 <div class="container mb-3">
   <%= simple_form_for [@medicine] do |f| %>
     <%= f.input :title, label: "Назва" %>
+    <%= f.input :zones, label: "Зона", :collection => Zone.all.map{|u| [u.title, u.id]} %>
     <%= f.input :description, label: "Опис"%>
     <%= f.input :price, label: "Ціна" %>
     <%= f.input :quantity, label: "Кількість" %>

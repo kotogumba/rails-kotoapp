@@ -1,5 +1,6 @@
 <div class="container">
   <h2 class="border-bottom border-2 mb-3"><%= @medicine.title %></h2>
+  <p><%= 'Категорія: ' + @medicine.zones.map(&:title).join(', ') %></p>
   <p><%= 'Ціна ' + @medicine.price.to_s%></p>
   <p><%=  @medicine.description %></p>
   <p><%= 'Кількість: '+@medicine.quantity.to_s %></p>
