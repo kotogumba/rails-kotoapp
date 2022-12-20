@@ -1,4 +1,6 @@
 class ClientsController < ApplicationController
+  before_action :set_client, only: [:show, :edit, :update, :destroy, :client_photos, :upload]
+
   def index
     if params[:query].present?
       @clients = Client.search(params[:query])
@@ -8,18 +10,15 @@ class ClientsController < ApplicationController
   end
 
   def client_photos
-    @client = Client.find(params[:id])
     @photos = @client.photos
   end
 
   def upload
-    @client = Client.find(params[:id])
     render :upload
     @client.photos.attach(params[:photos])
   end
 
   def show
-    @client = Client.find(params[:id])
   end
 
   def new
@@ -36,11 +35,9 @@ class ClientsController < ApplicationController
   end
 
   def edit
-    @client = Client.find(params[:id])
   end
 
   def update
-    @client = Client.find(params[:id])
     if @client.update(client_params)
       redirect_to @client
     else
@@ -49,13 +46,15 @@ class ClientsController < ApplicationController
   end
 
   def destroy
-    @client = Client.find(params[:id])
     @client.destroy
-
     redirect_to root_path, status: :see_other
   end
 
   private
+
+  def set_client
+    @client = Client.find(params[:id])
+  end
 
   def client_params
     params.require(:client).permit(:first_name, :last_name, :phone, :age, :comments, photos: [])

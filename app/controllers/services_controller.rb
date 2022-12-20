@@ -1,10 +1,11 @@
 class ServicesController < ApplicationController
+  before_action :set_service, only: [:show, :edit, :update, :destroy]
+
   def index
     @services = Service.all
   end
 
   def show
-    @service = Service.find(params[:id])
     respond_to do |format|
       format.html
       format.json { render json: @service }
@@ -26,11 +27,9 @@ class ServicesController < ApplicationController
   end
 
   def edit
-    @service = Service.find(params[:id])
   end
 
   def update
-    @service = Service.find(params[:id])
     if @service.update(service_params)
       redirect_to @service
     else
@@ -39,13 +38,16 @@ class ServicesController < ApplicationController
   end
 
   def destroy
-    @service = Service.find(params[:id])
     @service.destroy
 
     redirect_to root_path, status: :see_other
   end
 
   private
+
+  def set_service
+    @service = Service.find(params[:id])
+  end
 
   def service_params
     params.require(:service).permit(:client_id, :doctor_id, :medicine_id, :zone_id, :title, :comment, :quantity)

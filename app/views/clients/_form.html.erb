@@ -1,6 +1,13 @@
-<%= simple_form_for(@client) do |f| %>
-  <!-- [...] -->
-  <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-  <!-- [...] -->
-  <%= f.button :submit %>
-<% end %>
+<div class="container w-50">
+  <%= simple_form_for [@client] do |f| %>
+    <%= f.input :first_name, label: "Імʼя" %>
+    <%= f.input :last_name, label: "Прізвище" %>
+    <%= f.input :phone, label: "Телефон"%>
+    <%= f.input :age, label: "Вік" %>
+    <%= f.input :comments, label: "Коментарій" %>
+    <%= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %>
+    <%= f.input :photos, as: :file, input_html: { multiple: true }, label: "Фото" %>
+    <%= f.button :submit, value: "Підтвердити", class: "btn btn-primary" %>
+  <% end %>
+  <%= link_to "Назад", clients_path, class: "btn btn-primary" %>
+</div>

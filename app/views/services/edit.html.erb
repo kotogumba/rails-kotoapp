@@ -1,7 +1,1 @@
-<%= simple_form_for [@service] do |f| %>
-  <%= f.input :doctor_id %>
-  <%= f.input :client_id %>
-  <%= f.input :medicine_id %>
-  <%= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %>
-  <%= f.button :submit %>
-<% end %>
+<%= render "form", service: @service %>

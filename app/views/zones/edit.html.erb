@@ -1,8 +1,1 @@
-<%= simple_form_for [@zone] do |f| %>
-  <%= f.input :title, label: "Назва" %>
-  <%= f.input :description, label: "Опис" %>
-  <%# multiple checkboxes medicines %>
-  <%= f.input :medicines, label: "Препарати", collection: Medicine.all.map { |medicine| [medicine.title, medicine.id] }, as: :check_boxes %>
-  <%= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %>
-  <%= f.button :submit, value: "Підтвердити", class: "btn btn-primary" %>
-<% end %>
+<%= render "form", zone: @zone %>

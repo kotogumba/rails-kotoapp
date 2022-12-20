@@ -1,14 +1,14 @@
 class MedicinesController < ApplicationController
+  before_action :set_medicine, only: [:show, :edit, :update, :destroy, :zones]
+
   def index
     @medicines = Medicine.all
   end
 
   def show
-    @medicine = Medicine.find(params[:id])
   end
 
   def zones
-    @medicine = Medicine.find(params[:id])
     @zones = @medicine.zones
   end
 
@@ -31,11 +31,9 @@ class MedicinesController < ApplicationController
   end
 
   def edit
-    @medicine = Medicine.find(params[:id])
   end
 
   def update
-    @medicine = Medicine.find(params[:id])
     if @medicine.update(medicine_params)
       redirect_to @medicine
     else
@@ -44,7 +42,6 @@ class MedicinesController < ApplicationController
   end
 
   def destroy
-    @medicine = Medicine.find(params[:id])
     @medicine.destroy
 
     redirect_to root_path, status: :see_other
@@ -52,8 +49,11 @@ class MedicinesController < ApplicationController
 
   private
 
+  def set_medicine
+    @medicine = Medicine.find(params[:id])
+  end
+
   def medicine_params
     params.require(:medicine).permit(:title, :description, :price, :quantity, :zones)
   end
-
 end

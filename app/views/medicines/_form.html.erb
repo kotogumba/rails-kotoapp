@@ -1,0 +1,13 @@
+<div class="container mb-3">
+  <%= simple_form_for [@medicine] do |f| %>
+    <%= f.input :title, label: "Назва" %>
+    <%# zones as checkboxes %>
+    <%= f.input :zones, label: "Зони", collection: Zone.all.map { |zone| [zone.title, zone.id] }, as: :check_boxes, include_hidden: false %>
+    <%= f.input :description, label: "Опис"%>
+    <%= f.input :price, label: "Ціна" %>
+    <%= f.input :quantity, label: "Кількість" %>
+    <%= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %>
+    <%= f.button :submit, value: "Додати", class: "btn btn-primary" %>
+    <%= link_to "Назад", medicines_path, class: "btn btn-primary" %>
+  <% end %>
+</div>

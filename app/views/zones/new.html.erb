@@ -1,11 +1,1 @@
-<div class="container">
-  <%= simple_form_for [@zone] do |f| %>
-    <%= f.input :title, label: "Назва" %>
-    <%= f.input :description, label: "Опис" %>
-    <%= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %>
-    <%= f.button :submit, value: "Підтвердити", class: "btn btn-primary" %>
-  <% end %>
-</div>
-<div class="container">
-  <%= link_to "Назад", zones_path, class: "btn btn-primary" %>
-</div>
+<%= render "form", zone: @zone %>

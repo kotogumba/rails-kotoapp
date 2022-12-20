@@ -1,0 +1,14 @@
+<div class="container">
+  <%= simple_form_for [@zone] do |f| %>
+  <%= f.input :title, label: "Назва" %>
+  <%= f.input :description, label: "Опис" %>
+  <div class="overflow-auto" style="height: 200px;">
+    <%= f.input :medicines, label: "Препарати", collection: Medicine.all.map { |medicine| [medicine.title, medicine.id] }, as: :check_boxes, include_hidden: false %>
+  </div>
+  <%= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %>
+  <%= f.button :submit, value: "Підтвердити", class: "btn btn-primary" %>
+<% end %>
+</div>
+<div class="container">
+  <%= link_to "Назад", zones_path, class: "btn btn-primary" %>
+</div>
