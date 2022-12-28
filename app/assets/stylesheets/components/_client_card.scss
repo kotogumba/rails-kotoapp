@@ -1,9 +1,12 @@
+.client-card .btn {
+  color: #BF9742;
+}
 .client-card-header {
   display: flex;
   margin-bottom: 20px;
   background-color: white;
   border-radius: 5px;
-  padding: 5px;
+  padding: 15px;
 }
 
 .client-card-avatar {
@@ -13,12 +16,28 @@
   margin-right: 10px;
 }
 
+.client-card-avatar img {
+  width: 150px;
+  height: 150px;
+  border-radius: 15px;
+}
+
 .client-card-header-info {
   display: flex;
   flex-direction: column;
   width: 50%;
 }
 
+.client-card-header-info h2 {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.client-card-header-info p {
+  font-size: 12px;
+  margin-bottom: 5px;
+  line-height: 1.5;
+}
 .client-card-header .btn {
   margin-top: 5px;
 }
@@ -40,7 +59,6 @@
 .client-card-service-list .btn {
   position: absolute;
   bottom: 5px;
-
 }
 
 

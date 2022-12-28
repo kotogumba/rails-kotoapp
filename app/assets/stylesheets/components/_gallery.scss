@@ -1,0 +1,22 @@
+.gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.gallery-card {
+  width: 150px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  background-color: white;
+  border-radius: 5px;
+}
+
+.gallery-img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  object-position: center;
+}

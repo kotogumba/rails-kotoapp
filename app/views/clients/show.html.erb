@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container client-card">
 
   <%= link_to clients_path, class: "btn btn-primary mb-3" do %>
     <i class="fa-solid fa-arrow-left"></i>
@@ -8,7 +8,7 @@
     <div class="client-card-avatar">
       <% if @client.photos.any? %>
         <% photo = @client.photos.first %>
-        <%= link_to cl_image_tag(photo.key, width: 180, crop: :fill), photo %>
+        <%= link_to cl_image_tag(photo.key, width: 180, crop: :fill), photo, class: 'avatar' %>
       <% end %>
       <div>
         <%= link_to "#{@client.id}/client_photos", class: "btn btn-primary btn-sm" do %>
@@ -42,7 +42,7 @@
       <% end %>
     </div>
     <div>
-      <%= link_to "Додати",  new_service_path(client_id: @client.id), class: "btn btn-warning" %>
+      <%= link_to "+",  new_service_path(client_id: @client.id), class: "btn btn-primary" %>
     </div>
   </div>
 
