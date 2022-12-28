@@ -1,9 +1,13 @@
-<%= simple_form_for [@client] do |f| %>
-  <%= f.input :first_name %>
-  <%= f.input :last_name %>
-  <%= f.input :phone %>
-  <%= f.input :age %>
-  <%= f.input :comments %>
-  <%= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %>
-  <%= f.button :submit %>
-<% end %>
+<div class="container">
+  <%= simple_form_for [@client] do |f| %>
+    <%= f.input :first_name %>
+    <%= f.input :last_name %>
+    <%= f.input :phone %>
+    <%= f.input :age %>
+    <%= f.input :comments %>
+    <%= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %>
+    <%= f.button :submit %>
+  <% end %>
+
+  <%=  link_to "Назад", clients_path, class: "btn btn-primary"  %>
+</div>
