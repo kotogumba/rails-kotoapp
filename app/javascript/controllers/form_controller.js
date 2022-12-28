@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 
 export default class extends Controller {
-  static targets = [ "form-total", "zone", "medicine" ]
+  static targets = ["zone", "medicine" ]
 
   connect() {
     console.log("Hello, Stimulus!", this.element)
@@ -59,4 +59,3 @@ export default class extends Controller {
     )
   }
 }
-
