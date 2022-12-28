@@ -5,9 +5,7 @@ export default class extends Controller {
   static targets = ["form-total", "zone", "medicine"]
 
   connect() {
-    console.log(formTotalTarget)
-    console.log(zoneTarget)
-    console.log(medicineTarget)
+    
   }
 
   input(event) {
