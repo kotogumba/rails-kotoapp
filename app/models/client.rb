@@ -4,8 +4,8 @@ class Client < ApplicationRecord
   algoliasearch do
     # all
   end
-  has_many :services
-  has_many_attached :photos
+  has_many :services, dependent: :destroy
+  has_many_attached :photos, dependent: :destroy
 end
 
 Client.reindex!

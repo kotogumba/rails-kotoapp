@@ -7,16 +7,11 @@
         <div class="container">
           <div class="row row-cols-auto">
             <% if @client.photos.any? %>
-              <% @client.photos.first(3).each do |photo| %>
-                <div class="col">
-                  <div class="d-flex flex-column justify-content-center align-items-center mb-3" style="background-color:white;">
-                    <%= link_to cl_image_tag(photo.key, width: 180, crop: :fill), photo %>
-                    <div class="card-body">
-                      <p class="card-text"><%= (photo.created_at + 7200).strftime('%d/%m/%y %H:%M') %></p>
-                    </div>
-                  </div>
-                </div>
-              <% end %>
+              <% photo = @client.photos.first %>
+              <%= link_to cl_image_tag(photo.key, width: 180, crop: :fill), photo %>
+              <div class="card-body">
+                <p class="card-text"><%= (photo.created_at + 7200).strftime('%d/%m/%y %H:%M') %></p>
+              </div>
             <% end %>
           </div>
         </div>
@@ -32,7 +27,7 @@
 
       <div class="col border">
         <h5> Процедури: </h5>
-        <div class="overflow-auto border p-2 mb-3 bg-white rounded" style="height: 200px; width: 400px">
+        <div class="overflow-auto border p-2 mb-3 bg-white rounded" style="max-height: 200px; width: 400px">
           <% @client.services.all.reverse.each_with_index do |service, index| %>
             <a href="/services/<%=service.id%>"><p><%= "#{index + 1} - #{(service.created_at + 7200).strftime('%d/%m/%y %H:%M')} - #{service.medicine.title}" %></p></a>
           <% end %>
