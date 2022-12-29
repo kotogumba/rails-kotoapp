@@ -11,20 +11,25 @@
     <%= link_to '<i class="fa-solid fa-circle-plus"></i>'.html_safe, new_client_path, style: "font-size:50px;", id:"add-button"%>
   </div>
 
-
-  <div class="row row-cols-auto">
-    <% @clients.each do |client| %>
-      <div class="col">
-        <% if client.photos.any? %>
-        <div class="border mb-1 pt-2 d-flex flex-column justify-content-between align-items-center" style="width: 170px; height: 230px;">
+  <div class="client-cards">
+    <div class="row">
+      <% @clients.each do |client| %>
+        <div class="col-sm-12">
           <a href="/clients/<%=client.id%>">
-            <%= cl_image_tag client.photos.first.key, class: "flex-grow-2", width: "150px;" %>
+            <div class="card mb-3">
+              <% if client.photos.any? %>
+                <%= cl_image_tag client.photos.first.key, class: "card-img-top" %>
+              <% else %>
+                <%= image_tag "https://images.unsplash.com/photo-1542735933-8f7b5f9f5f9f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80", class: "card-img-top" %>
+              <% end %>
+              <div class="card-body">
+                <h1 ><%= client.first_name %> <%= client.last_name %></h1>
+              </div>
+            </div>
           </a>
-          <p class="text-center" style="font-size: 12px;"> <%= client.first_name %> <%= client.last_name %> </p>
         </div>
-        <% end %>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
 
 </div>
