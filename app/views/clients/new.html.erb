@@ -11,6 +11,7 @@
       <%= f.input :age, label: "Вік" %>
       <%= f.input :comments, label: "Коментарій" %>
       <%= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %>
+      <%= f.input :avatar, as: :file, label: "Аватар" %>
       <label class="btn btn-primary mb-3">
         <i class="fa-solid fa-images "></i>
         <span style="display:none;">

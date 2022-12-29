@@ -6,6 +6,7 @@
     <%= f.input :age %>
     <%= f.input :comments %>
     <%= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %>
+    <%= f.input :avatar, as: :file, label: "Аватар" %>
     <%= f.button :submit, class: "btn btn-primary" %>
   <% end %>
 
