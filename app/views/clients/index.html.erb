@@ -1,25 +1,17 @@
-
 <div class="container">
-  <div class="row">
-    <div class="col-12">
-      <%= form_with url: clients_path, method: :get, class: "d-flex mb-3" do %>
-        <%= text_field_tag :query,
-          params[:query],
-          class: "form-control",
-          placeholder: "Пошук пацієнта" %>
-        <%= submit_tag "Search", class: "btn btn-primary" %>
-      <% end %>
-    </div>
+  <%= form_with url: clients_path, method: :get, class: "d-flex mb-3" do %>
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+      placeholder: "Пошук пацієнта" %>
+    <%= submit_tag "Search", class: "btn btn-primary" %>
+  <% end %>
+
+  <div class="fab-container">
+    <%= link_to '<i class="fa-solid fa-circle-plus"></i>'.html_safe, new_client_path, style: "font-size:50px;", id:"add-button"%>
   </div>
-</div>
 
-<div class="fab-container">
 
-  <%= link_to '<i class="fa-solid fa-circle-plus"></i>'.html_safe, new_client_path, style: "font-size:50px;", id:"add-button"%>
-
-</div>
-
-<div class="container">
   <div class="row row-cols-auto">
     <% @clients.each do |client| %>
       <div class="col">
@@ -34,18 +26,5 @@
       </div>
     <% end %>
   </div>
-</div>
-<% if false %>
-  <div class= "container">
-    <div>
-      <ol>
-      <% @clients.each do |client| %>
-        <li><a href="/clients/<%=client.id%>" style="text-decoration: none"> <p> <%= "#{client.first_name} #{client.last_name}"%> </p> </a></li>
-      <% end %>
-    </div>
-  </div>
 
-<% end %>
-<div class="container">
-    <%= link_to "Назад", root_path, class: "btn btn-primary" %>
-  </div>
+</div>
