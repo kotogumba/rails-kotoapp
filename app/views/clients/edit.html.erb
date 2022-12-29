@@ -6,8 +6,7 @@
     <%= f.input :age %>
     <%= f.input :comments %>
     <%= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %>
-    <%= f.button :submit %>
+    <%= f.button :submit, class: "btn btn-primary" %>
   <% end %>
 
-  <%=  link_to "Назад", clients_path, class: "btn btn-primary"  %>
-</div>
+  <%=  link_to "Назад", client_path(@client), class: "btn btn-primary" %>

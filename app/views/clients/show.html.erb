@@ -1,51 +1,55 @@
 <div class="container client-card">
 
-  <%= link_to clients_path, class: "btn btn-primary mb-3" do %>
-    <i class="fa-solid fa-arrow-left"></i>
+  <%= link_to clients_path do %>
+    <i class="fa-solid fa-angle-left"></i>
   <% end %>
 
   <div class="client-card-header">
     <div class="client-card-avatar">
       <% if @client.photos.any? %>
         <% photo = @client.photos.first %>
-        <%= link_to cl_image_tag(photo.key, width: 180, crop: :fill), photo, class: 'avatar' %>
+        <%= link_to cl_image_tag(photo.key, width: 180, crop: :fill), photo %>
       <% end %>
-      <div>
-        <%= link_to "#{@client.id}/client_photos", class: "btn btn-primary btn-sm" do %>
-          <i class="fa-solid fa-images"></i>
-        <% end %>
-        <%= link_to "#{@client.id}/upload", class: "btn btn-primary btn-sm"  do %>
-          <i class="fa-solid fa-upload"></i>
-        <% end %>
-        <%= link_to edit_client_path(@client), class: "btn btn-primary btn-sm" do %>
-        <i class="fa-solid fa-edit"></i>
-        <% end %>
-        <%= link_to client_path(@client), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-primary btn-sm" do %>
-          <i class="fa-solid fa-trash"></i>
-        <% end %>
-      </div>
-      </div>
+    </div>
     <div class="client-card-header-info">
       <h2 ><%= @client.first_name %> <%= @client.last_name %></h2>
       <p>Телефон: <%= @client.phone %></p>
       <p>Вік: <%= @client.age %></p>
       <p>Коментарій: <%= @client.comments %></p>
+      <div>
+        <%= link_to "#{@client.id}/client_photos" do %>
+          <i class="fa-solid fa-images"></i>
+        <% end %>
+        <%= link_to "#{@client.id}/upload" do %>
+          <i class="fa-solid fa-upload"></i>
+        <% end %>
+        <%= link_to edit_client_path(@client) do %>
+        <i class="fa-solid fa-edit"></i>
+        <% end %>
+        <%= link_to client_path(@client), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
+          <i class="fa-solid fa-trash"></i>
+        <% end %>
+      </div>
     </div>
   </div>
 
 
-  <div class="client-card-service-list">
-    <h5> Процедури: </h5>
-    <div>
+  <div class="client-card-service">
+    <h1> Процедури: </h1>
+    <div class="client-card-service-list">
       <% @client.services.all.reverse.each_with_index do |service, index| %>
-        <a href="/services/<%=service.id%>"><p><%= "#{index + 1} - #{(service.created_at + 7200).strftime('%d/%m/%y %H:%M')} - #{service.medicine.title}" %></p></a>
+        <a href="/services/<%=service.id%>"><p><%= "#{index + 1}. #{service.zone.title} - #{service.medicine.title} #{(service.created_at + 7200).strftime('%d/%m/%y')} " %></p></a>
       <% end %>
     </div>
-    <div>
-      <%= link_to "+",  new_service_path(client_id: @client.id), class: "btn btn-primary" %>
+    <div class="client-card-service-btn">
+      <%= link_to new_service_path(client_id: @client.id) do %>
+        <i class="fa-solid fa-circle-plus"></i>
+      <% end %>
     </div>
   </div>
 
 
 
 </div>
+<%# time: %>
+<%# #{(service.created_at + 7200).strftime('%d/%m/%y %H:%M')}  %>
