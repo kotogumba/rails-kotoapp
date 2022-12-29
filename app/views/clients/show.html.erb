@@ -6,7 +6,7 @@
 
   <div class="client-card-header">
     <div class="client-card-avatar">
-      <% if @client.avatar %>
+      <% if @client.avatar.nil? %>
         <% photo = @client.avatar %>
         <%= link_to cl_image_tag(photo.key, width: 180, crop: :fill), photo %>
       <% end %>
