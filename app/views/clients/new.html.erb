@@ -1,14 +1,24 @@
-<div class="container w-50">
-  <%= simple_form_for [@client] do |f| %>
-    <%= f.input :first_name, label: "Імʼя" %>
-    <%= f.input :last_name, label: "Прізвище" %>
-    <%= f.input :phone, label: "Телефон"%>
-    <%= f.input :age, label: "Вік" %>
-    <%= f.input :comments, label: "Коментарій" %>
-    <%= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %>
-    <%= f.input :photos, as: :file, input_html: { multiple: true }, label: "Фото" %>
-    <%= f.button :submit, value: "Підтвердити", class: "btn btn-primary" %>
+<div class="container">
+  <%= link_to clients_path do %>
+      <i class="fa-solid fa-angle-left"></i>
   <% end %>
-</div>
 
-<%=  link_to "Назад", clients_path, class: "btn btn-primary"  %>
+  <div class="new-client-form">
+    <%= simple_form_for [@client] do |f| %>
+      <%= f.input :first_name, label: "Імʼя" %>
+      <%= f.input :last_name, label: "Прізвище" %>
+      <%= f.input :phone, label: "Телефон"%>
+      <%= f.input :age, label: "Вік" %>
+      <%= f.input :comments, label: "Коментарій" %>
+      <%= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %>
+      <label class="btn btn-primary mb-3">
+        <i class="fa-solid fa-images "></i>
+        <span style="display:none;">
+          <%= f.input :photos, as: :file, input_html: { multiple: true }, label: "Фото", hint: "Можна завантажити декілька фото" %>
+        </span>
+      </label>
+      <br/>
+      <%= f.button :submit, value: "Підтвердити", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
