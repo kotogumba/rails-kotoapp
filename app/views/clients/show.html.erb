@@ -7,8 +7,12 @@
   <div class="client-card-header">
     <div class="client-card-avatar">
       <% if @client.avatar.key.nil? %>
-        <% photo = @client.photos.last %>
-        <%= link_to cl_image_tag(photo.key), photo %>
+        <% if  @client.photos.last.nil? %>
+          <%= image_tag "avatar.png", class: "avatar" %>
+        <% else %>
+          <% photo = @client.photos.last %>
+          <%= link_to cl_image_tag(photo.key), photo %>
+        <% end %>
       <% else %>
         <%= link_to cl_image_tag(@client.avatar.key), @client.avatar %>
       <% end %>
