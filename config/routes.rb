@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   resources :medicines
   resources :doctors
   resources :zones
-  root to: "pages#home"
+  # root to: "pages#home"
+  get "pages/home", to: "pages#home"
+  root to: "clients#index"
   get "clients/:id/upload", to: "clients#upload"
   get "clients/:id/client_photos", to: "clients#client_photos"
   get "zones/:id/medicines", to: "zones#medicines"

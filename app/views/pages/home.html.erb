@@ -1,17 +1,36 @@
-<div class="container">
-  <div class="border-bottom border-2 mb-3">
-    <h1>Добрий день <em>Анастасія!</em></h1>
-    <% url = "https://api.privatbank.ua/p24api/pubinfo?exchange&coursid=5"%>
-    <% user_serialized = URI.open(url).read%>
-    <% user = JSON.parse(user_serialized)%>
-    <div class="text-start">
+
+<%= link_to clients_path do %>
+  <i class="fa-solid fa-angle-left back-btn ms-3" ></i>
+<% end %>
+<div class="container home-page">
+  <% url = "https://api.privatbank.ua/p24api/pubinfo?exchange&coursid=5"%>
+  <% user_serialized = URI.open(url).read%>
+  <% user = JSON.parse(user_serialized)%>
+
+
+  <div class="ccy">
+    <h3>Курс валют</h3>
+    <div>
       <p class="h6"><%= "#{user[1]['ccy']}/#{user[1]['base_ccy']} #{user[1]['buy'].to_f.round(4)}/#{user[1]['sale'].to_f.round(4)}"%> </p>
       <p class="h6"><%= "#{user[0]['ccy']}/#{user[0]['base_ccy']} #{user[0]['buy'].to_f.round(4)}/#{user[0]['sale'].to_f.round(4)}"%> </p>
     </div>
-
   </div>
-  <%= link_to "Паціенти", clients_path, class: "btn btn-primary"%>
-  <%= link_to "Процедури", services_path, class: "btn btn-primary" %>
-  <%= link_to "Препарати", medicines_path, class: "btn btn-primary" %>
-  <%= link_to "Зони", zones_path, class: "btn btn-primary" %>
+
+  <div class="home-info">
+    <div class="home-info-item">
+      <h3> Всього пацієнтів: </h3>
+      <p ><%= Client.count %></p>
+      <h3> Всього процедур: </h3>
+      <p ><%= Service.count %></p>
+    </div>
+  </div>
+
 </div>
+<% if false  %>
+  <div class="home-buttons">
+    <%= link_to "Паціенти", clients_path, class: "btn btn-primary"%>
+    <%= link_to "Процедури", services_path, class: "btn btn-primary" %>
+    <%= link_to "Препарати", medicines_path, class: "btn btn-primary" %>
+    <%= link_to "Зони", zones_path, class: "btn btn-primary" %>
+  </div>
+<% end %>

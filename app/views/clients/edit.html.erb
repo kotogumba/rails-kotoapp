@@ -1,13 +1,17 @@
 <div class="container">
-  <%= simple_form_for [@client] do |f| %>
-    <%= f.input :first_name %>
-    <%= f.input :last_name %>
-    <%= f.input :phone %>
-    <%= f.input :age %>
-    <%= f.input :comments %>
-    <%= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %>
-    <%= f.input :avatar, as: :file, label: "Аватар" %>
-    <%= f.button :submit, class: "btn btn-primary" %>
+  <%= link_to client_path(@client) do %>
+    <i class="fa-solid fa-angle-left back-btn"></i>
   <% end %>
-
-  <%=  link_to "Назад", client_path(@client), class: "btn btn-primary" %>
+  <div class="new-client-form">
+    <%= simple_form_for [@client] do |f| %>
+      <%= f.input :first_name %>
+      <%= f.input :last_name %>
+      <%= f.input :phone %>
+      <%= f.input :age %>
+      <%= f.input :comments %>
+      <%= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %>
+      <%= f.input :avatar, as: :file, label: "Аватар" %>
+      <%= f.button :submit, class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
