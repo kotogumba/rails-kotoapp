@@ -3,7 +3,7 @@
   <div class="container-fluid">
 
     <% if user_signed_in? %>
-    <%=  link_to "pages/home", class: "navbar-home" do %>
+    <%=  link_to root_path, class: "navbar-home" do %>
       <i class="fa-solid fa-home"></i>
     <% end %>
     <%= link_to clients_path, class: "navbar-clients" do %>
