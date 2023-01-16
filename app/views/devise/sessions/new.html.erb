@@ -1,9 +1,8 @@
-<div class="">
-  <div class="login-top h-50">
-    <h1>Log in</h1>
-    <p>Log in to your account to continue</p>
+<div class="relative vh-100 d-flex flex-column justify-content-between mt-0 bg-danger-subtle">
+  <div class="login-top overflow-hidden text-center align-middle" style="height: 40%;">
+    <p class="fs-3 fw-light pt-5"> DR.CHUMACHENKO</p>
   </div>
-  <div class="login-bottom h-50 rounded rounded-5 rounded-bottom bg-white p-3 shadow-lg">
+  <div class="login-bottom rounded rounded-5 rounded-bottom bg-white p-3 shadow-lg" style="height: 60%;">
     <h2>Log in</h2>
 
     <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), data: { turbo: :false }) do |f| %>
@@ -18,8 +17,9 @@
         <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
       </div>
 
-      <div class="form-actions">
-        <%= f.button :submit, "Log in" %>
+      <div class="form-actions d-grid">
+
+        <button type="submit" class="btn bg-danger-subtle">Log in</button>
       </div>
     <% end %>
 
