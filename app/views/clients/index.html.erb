@@ -2,7 +2,7 @@
   <%= form_with url: clients_path, method: :get, class: "input-group mb-3" do %>
     <%= text_field_tag :query,
       params[:query],
-      class: "form-control bg-white",
+      class: "form-control bg-white rounded-pill",
       "aria-describedby": "button-addon1",
       placeholder: "Пошук" %>
   <% end %>
@@ -11,25 +11,19 @@
     <%= link_to '<i class="bi bi-person-fill-add"></i>'.html_safe, new_client_path, style: "font-size:50px;", id:"add-button"%>
   </div>
 
-  <div class="client-cards">
-    <div class="row">
-      <% @clients.each do |client| %>
-        <div class="col-sm-12">
-          <a href="/clients/<%=client.id%>">
-            <div class="card mb-3">
-              <% if client.photos.any? %>
-                <%= cl_image_tag client.photos.first.key, class: "card-img-top" %>
-              <% else %>
-                <%= image_tag "avatar.png", class: "card-img-top" %>
-              <% end %>
-              <div class="card-body">
-                <h1 ><%= client.first_name %> <%= client.last_name %></h1>
-              </div>
-            </div>
-          </a>
+  <div class="index-card-group">
+    <% @clients.each do |client| %>
+      <a href="/clients/<%=client.id%>" class="text-decoration-none">
+        <div class="index-card mb-3">
+          <% if client.photos.any? %>
+            <%= cl_image_tag client.photos.first.key, class: "index-card-img" %>
+          <% else %>
+            <%= image_tag "avatar.png", class: "index-card-img" %>
+          <% end %>
+          <p><%= client.first_name %> <%= client.last_name %></h5>
         </div>
-      <% end %>
-    </div>
+      </a>
+    <% end %>
   </div>
 
 </div>
