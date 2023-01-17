@@ -47,10 +47,13 @@
   <div class="client-card-service">
     <p class="fs-5 text-center"> Процедури: </p>
     <div class="client-card-service-list">
-      <% @client.services.all.reverse.each_with_index do |service, index| %>
-        <a href="/services/<%=service.id%>">
-          <p class="fs-6 fw-light"><%= "#{index + 1}. #{service.zone.title} - #{service.medicine.title} #{(service.created_at + 7200).strftime('%d/%m/%y')} " %></p>
-        </a>
+      <% @grouped_services.each do |date, services| %>
+        <p class="fs-6 fw-light text-center"><%= date %></p>
+        <% services.each_with_index do |service,index| %>
+          <a href="/services/<%=service.id%>">
+            <p class="fs-6 fw-light"><%= "#{index+1} - #{service.zone.title} - #{service.medicine.title} #{(service.created_at + 7200).strftime('%d/%m/%y')} " %></p>
+          </a>
+        <% end %>
       <% end %>
     </div>
     <div class="client-card-service-btn">

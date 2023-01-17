@@ -20,6 +20,10 @@ class ClientsController < ApplicationController
 
   def show
     @client = Client.find(params[:id])
+    @services = @client.services
+    # services grouped by day and sorted by time
+    @grouped_services = @services.group_by { |service| service.created_at.to_date }.sort_by { |date, _| date }.reverse
+  
   end
 
   def new
