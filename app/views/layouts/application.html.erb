@@ -12,12 +12,13 @@
   </head>
 
   <body>
-    <div class="app">
-      <%= render "shared/flashes" %>
-      <%= yield %>
+    <div class="app bg-danger-subtle">
       <% if user_signed_in? %>
         <%= render "shared/navbar" %>
       <% end %>
+      <%= render "shared/flashes" %>
+      <%= yield %>
+
     </div>
   </body>
 </html>
