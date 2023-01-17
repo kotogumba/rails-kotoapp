@@ -11,9 +11,9 @@
     <%= link_to '<i class="bi bi-person-fill-add"></i>'.html_safe, new_client_path, style: "font-size:50px;", id:"add-button"%>
   </div>
 
-  <div class="index-card-group">
+  <div class="index-card-group ">
     <% @clients.each do |client| %>
-      <a href="/clients/<%=client.id%>" class="text-decoration-none index-card mb-3">
+      <a href="/clients/<%=client.id%>" class="text-decoration-none index-card mb-3 ">
 
         <% if client.photos.any? %>
           <%= cl_image_tag client.photos.first.key, class: "index-card-img" %>
