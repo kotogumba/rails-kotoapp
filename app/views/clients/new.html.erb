@@ -12,14 +12,14 @@
       <%= f.input :comments, label: "Коментарій" %>
       <%= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %>
       <%= f.input :avatar, as: :file, label: "Аватар" %>
-      <label class="btn btn-primary mb-3">
+      <label class="btn bg-danger-subtle mb-3">
         <i class="fa-solid fa-images "></i>
         <span style="display:none;">
           <%= f.input :photos, as: :file, input_html: { multiple: true }, label: "Фото", hint: "Можна завантажити декілька фото" %>
         </span>
       </label>
       <br/>
-      <%= f.button :submit, value: "Підтвердити", class: "btn btn-primary" %>
+      <%= f.button :submit, value: "Підтвердити", class: "btn bg-danger-subtle" %>
     <% end %>
   </div>
 </div>

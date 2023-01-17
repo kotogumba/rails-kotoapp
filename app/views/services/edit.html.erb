@@ -1,7 +1,20 @@
-<%= simple_form_for [@service] do |f| %>
-  <%= f.input :doctor_id %>
-  <%= f.input :client_id %>
-  <%= f.input :medicine_id %>
-  <%= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %>
-  <%= f.button :submit %>
-<% end %>
+<div class="container">
+  <%= link_to service_path(@service) do %>
+    <i class="fa-solid fa-angle-left back-btn mb-3"></i>
+  <% end %>
+  <div class="bg-white rounded-3 shadow-lg p-3 mb-3">
+    <%= simple_form_for [@service] do |f| %>
+      <%= f.input :doctor_id, label: "Лікар", collection: Doctor.all.map {|d| ["#{d.first_name} #{d.last_name}", d.id]} , default: Doctor.first %>
+      <% if @client_id %>
+        <%= f.input :client_id, :as => :hidden, :input_html => { :value => @client_id } %>
+      <% else %>
+        <%= f.input :client_id,label: "Паціент", :collection => Client.all.map{|u| [u.first_name + ' ' + u.last_name, u.id]} %>
+      <% end %>
+      <%= f.input :zone_id, class: "form-control", label: "Процедура", :collection => Zone.all.map{|u| [u.title, u.id]}, input_html: {data: {form_target: 'zone', action: "change->form#input"}} %>
+      <%= f.input :medicine_id, class: "form-control", label: "Препарат", :collection => Medicine.all.map{|u| [u.title, u.id]}, input_html: {data: {form_target: 'medicine'}} %>
+
+      <%= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %>
+      <%= f.button :submit, value: 'Оновити', class: "btn bg-danger-subtle" %>
+    <% end %>
+  </div>
+</div>
