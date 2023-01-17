@@ -9,17 +9,17 @@
 #add-button {
   // color: #f8d7d9;
   color: #3F72AF;
-  width: 56px;
-  height: 56px;
-    :hover {
-      color:#3c679c ;
-      opacity: 1;
-      transform: scale(1.2);
-    }
+  background-color: #f8d7d9;
+  border-radius: 50%;
+  border: none;
+  padding: 15px 8px;
 
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  outline: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     i {
-      font-size: 56px;
-      filter: drop-shadow(0 0 0.75rem rgba(0, 0, 0, 0.25));
+      font-size: 36px;
     }
 }
 

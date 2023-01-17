@@ -7,8 +7,10 @@
       placeholder: "Пошук" %>
   <% end %>
 
-  <div class="fab-container ">
-    <%= link_to '<i class="bi bi-person-fill-add "></i>'.html_safe, new_client_path, style: "font-size:50px;", id:"add-button"%>
+  <div class="fab-container">
+    <%= link_to new_client_path, id:"add-button" do %>
+      <i class="bi bi-person-fill-add align-middle"></i>
+    <% end %>
   </div>
 
   <div class="index-card-group bg-white rounded-3 shadow-lg pt-3">
