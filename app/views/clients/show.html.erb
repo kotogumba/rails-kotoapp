@@ -1,50 +1,56 @@
-<div class="container client-card">
+<div class="container client-card mt-3">
 
   <%= link_to clients_path do %>
-    <i class="fa-solid fa-angle-left back-btn" ></i>
+    <i class="fa-solid fa-angle-left back-btn mb-3" ></i>
   <% end %>
 
-  <div class="client-card-header">
-    <div class="client-card-avatar">
-      <% if @client.avatar.key.nil? %>
-        <% if  @client.photos.last.nil? %>
-          <%= image_tag "avatar.png", class: "avatar" %>
+  <div class="d-flex flex-column bg-white rounded-3 shadow-lg p-3 mb-3">
+    <div  class="d-flex flex-row mb-3">
+      <div class="client-card-avatar">
+        <% if @client.avatar.key.nil? %>
+          <% if  @client.photos.last.nil? %>
+            <%= image_tag "avatar.png", class: "avatar" %>
+          <% else %>
+            <% photo = @client.photos.last %>
+            <%= link_to cl_image_tag(photo.key), photo %>
+          <% end %>
         <% else %>
-          <% photo = @client.photos.last %>
-          <%= link_to cl_image_tag(photo.key), photo %>
-        <% end %>
-      <% else %>
-        <%= link_to cl_image_tag(@client.avatar.key), @client.avatar %>
-      <% end %>
-    </div>
-    <div class="client-card-header-info">
-      <h2 ><%= @client.first_name %> <%= @client.last_name %></h2>
-      <p>Телефон: <%= @client.phone %></p>
-      <p>Вік: <%= @client.age %></p>
-      <p>Коментарій: <%= @client.comments %></p>
-      <div>
-        <%= link_to "#{@client.id}/client_photos" do %>
-          <i class="fa-solid fa-images"></i>
-        <% end %>
-        <%= link_to "#{@client.id}/upload" do %>
-          <i class="fa-solid fa-upload"></i>
-        <% end %>
-        <%= link_to edit_client_path(@client) do %>
-        <i class="fa-solid fa-edit"></i>
-        <% end %>
-        <%= link_to client_path(@client), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
-          <i class="fa-solid fa-trash"></i>
+          <%= link_to cl_image_tag(@client.avatar.key), @client.avatar %>
         <% end %>
       </div>
+      <div class="w-100">
+
+        <p class="text-center fs-2 fw-normal "><%= @client.first_name %> <%= @client.last_name %></p>
+
+        <p class="fs-6 fw-light">Телефон: <%= @client.phone %></p>
+        <p class="fs-6 fw-light">Вік: <%= @client.age %></p>
+        <p class="fs-6 fw-light">Коментарій: <%= @client.comments %></p>
+      </div>
+    </div>
+    <div>
+      <%= link_to "#{@client.id}/client_photos", class: "btn bg-danger-subtle" do %>
+        <i class="fa-solid fa-images"></i>
+      <% end %>
+      <%= link_to "#{@client.id}/upload", class: "btn bg-danger-subtle" do %>
+        <i class="fa-solid fa-upload"></i>
+      <% end %>
+      <%= link_to edit_client_path(@client), class: "btn bg-danger-subtle" do %>
+        <i class="fa-solid fa-edit"></i>
+      <% end %>
+      <%= link_to client_path(@client), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn bg-danger-subtle" do %>
+        <i class="fa-solid fa-trash"></i>
+      <% end %>
     </div>
   </div>
 
 
   <div class="client-card-service">
-    <h1> Процедури: </h1>
+    <p class="fs-5 text-center"> Процедури: </p>
     <div class="client-card-service-list">
       <% @client.services.all.reverse.each_with_index do |service, index| %>
-        <a href="/services/<%=service.id%>"><p><%= "#{index + 1}. #{service.zone.title} - #{service.medicine.title} #{(service.created_at + 7200).strftime('%d/%m/%y')} " %></p></a>
+        <a href="/services/<%=service.id%>">
+          <p class="fs-6 fw-light"><%= "#{index + 1}. #{service.zone.title} - #{service.medicine.title} #{(service.created_at + 7200).strftime('%d/%m/%y')} " %></p>
+        </a>
       <% end %>
     </div>
     <div class="client-card-service-btn">

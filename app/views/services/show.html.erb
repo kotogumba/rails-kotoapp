@@ -1,19 +1,40 @@
 <div class="container">
-  <h2> <%= @service.zone.title %> </h2>
-  <h4> <%= "Препарат: #{@service.medicine.title}"%></h4>
-  <p> <%= "Кількість: #{@service.quantity}"%> </p>
-  <p> <%= "Паціент: #{@service.client.first_name} #{@service.client.last_name}"%> </p>
-  <p> <%= "Доктор: #{@service.doctor.first_name} #{@service.doctor.last_name}"%> </p>
-  <p> <%= "Коментарій: #{@service.comment}"%> </p>
-  <p> <%= "Дата: #{@service.created_at.localtime.strftime('%d/%m/%y %H:%M')}"%> </p>
-</div>
-<div class="container">
-  <%= link_to "Змінити", edit_service_path(@service), class: "btn btn-primary" %>
+  <%= link_to client_path(@service.client) do %>
+      <i class="fa-solid fa-angle-left back-btn mb-3"></i>
+  <% end %>
+  <div class="text-center bg-white rounded-3 p-3 shadow-lg">
+    <h2 class="fs-3"> <%= @service.zone.title %> </h2>
+    <h4 class="fs-5 fw-light"> <%= "Препарат: #{@service.medicine.title}"%></h4>
+    <div class="text-start ">
+      <div class="row">
+        <p class="col-4 fs-6 fw-light"> Паціент: </p>
+        <p class="col-8"><%= @service.client.first_name + @service.client.last_name %> </p>
+      </div>
+      <div class="row">
+        <p class="col-4 fs-6 fw-light "> Кількість: </p>
+        <p class="col-8"><%= @service.quantity %> </p>
+      </div>
+      <div class="row">
+        <p class="col-4 fs-6 fw-light"> Коментарій:</p>
+        <p class="col-8"><%= @service.comment %> </p>
+      </div>
+      <div class="row">
+        <p class="col-4 fs-6 fw-light"> Дата:  </p>
+        <p class="col-8"><%= @service.created_at.localtime.strftime('%H:%M %d.%m.%y ') %> </p>
+      </div>
+    </div>
+    <div class="container">
+      <%= link_to edit_service_path(@service), class: "btn bg-danger-subtle" do %>
+        <i class="fa-solid fa-edit"></i>
+      <% end %>
 
-  <%= link_to "Видалити", service_path(@service), data: {
-                      turbo_method: :delete,
-                      turbo_confirm: "Are you sure?"
-                      }, class: "btn btn-primary" %>
+      <%= link_to service_path(@service), data: {
+                          turbo_method: :delete,
+                          turbo_confirm: "Are you sure?"
+                          }, class: "btn bg-danger-subtle" do %>
+        <i class="fa-solid fa-trash"></i>
+      <% end %>
 
-  <%= link_to "Назад", client_path(@service.client), class: "btn btn-primary" %>
+    </div>
+  </div>
 </div>

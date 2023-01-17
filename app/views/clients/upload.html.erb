@@ -6,7 +6,7 @@
   <div class="new-client-form">
     <%= simple_form_for [@client] do |f| %>
       <%= f.input :photos, label: "Виберіть фото:", as: :file, input_html: { multiple: true } %>
-      <%= f.button :submit, value: "Додати", class: "btn btn-primary" %>
+      <%= f.button :submit, value: "Додати", class: "btn bg-danger-subtle" %>
     <% end %>
   </div>
 </div>

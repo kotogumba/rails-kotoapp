@@ -1,5 +1,5 @@
 <div class="container">
-  <%= link_to clients_path do %>
+  <%= link_to client_path(@client) do %>
       <i class="fa-solid fa-angle-left back-btn"></i>
   <% end %>
   <div class="new-service-form" data-controller="form">
@@ -20,7 +20,7 @@
       <%= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %>
       <%= f.input :quantity, label: "Кількість" %>
       <%= f.input :comment, label: "Коментарій" %>
-      <%= f.button :submit, value: "Підтвердити", class: "btn btn-primary" %>
+      <%= f.button :submit, value: "Підтвердити", class: "btn bg-danger-subtle" %>
     <% end %>
   </div>
 </div>

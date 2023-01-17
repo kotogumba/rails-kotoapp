@@ -13,6 +13,7 @@ class ServicesController < ApplicationController
 
   def new
     @client_id = params[:client_id]
+    @client = Client.find(@client_id)
     @service = Service.new
   end
 
