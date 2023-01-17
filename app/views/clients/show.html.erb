@@ -48,10 +48,12 @@
     <p class="fs-5 text-center"> Процедури: </p>
     <div class="client-card-service-list">
       <% @grouped_services.each do |date, services| %>
-        <p class="fs-6 fw-light text-center"><%= date %></p>
+        <div class="d-flex justify-content-center">
+          <p class="fs-6 text-center" id="service-date"><%= date %></p>
+        </div>
         <% services.each_with_index do |service,index| %>
           <a href="/services/<%=service.id%>">
-            <p class="fs-6 fw-light"><%= "#{index+1} - #{service.zone.title} - #{service.medicine.title} #{(service.created_at + 7200).strftime('%d/%m/%y')} " %></p>
+            <p class="fs-6 fw-light"><%= "#{index+1} - #{service.zone.title} - #{service.medicine.title} #{(service.created_at + 7200).strftime('%d/%m/%y %H:%m')} " %></p>
           </a>
         <% end %>
       <% end %>
