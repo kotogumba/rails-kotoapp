@@ -1,7 +1,7 @@
 <div class="relative vh-100 d-flex flex-column justify-content-between mt-0 bg-danger-subtle">
-  <div class="login-top overflow-hidden text-center align-middle" style="height: 40%;">
+  <div class="login-top overflow-hidden text-center align-middle">
     <div class="d-flex justify-content-center align-items-center h-100">
-      <p class="fs-3 fw-light pt-5"> DR.CHUMACHENKO</p>
+      <p class="fs-3 fw-light pt-5" id='logo-login'> DR.CHUMACHENKO</p>
     </div>
   </div>
   <div class="login-bottom rounded rounded-5 rounded-bottom bg-white p-3 shadow-lg" style="height: 60%;">
@@ -21,11 +21,10 @@
         </div>
 
         <div class="form-actions d-grid">
-
           <button type="submit" class="btn bg-danger-subtle">Log in</button>
         </div>
       <% end %>
-      <div class="fs-6 fw-light text-primary-emphasis">
+      <div class="fw-light text-primary-emphasis " id="login-links">
         <%= render "devise/shared/links" %>
       </div>
     </div>
