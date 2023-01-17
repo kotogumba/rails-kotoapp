@@ -3,18 +3,21 @@
   <div class="container-fluid">
 
     <% if user_signed_in? %>
-    <%=  link_to root_path, class: "navbar-home" do %>
-      <i class="fa-solid fa-home"></i>
-    <% end %>
-    <%= link_to clients_path, class: "navbar-clients" do %>
-      <i class="fa-solid fa-users"></i>
-    <% end %>
-    <div class="btn-group dropstart">
-      <%= image_tag "kote_avatar.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
+      <%=  link_to root_path, class: "nav-link" do %>
+        <i class="bi bi-people-fill"></i>
+
+      <% end %>
+
+      <%= link_to "dashboard", class: "nav-link" do %>
+        <i class="bi bi-currency-exchange"></i>
+      <% end %>
+
+      <div class="btn-group dropstart">
+        <%= image_tag "kote_avatar.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
+        </div>
       </div>
-    </div>
     <% else %>
        <%= link_to "Login", new_user_session_path, class: "nav-link" %>
     <% end %>

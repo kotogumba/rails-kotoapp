@@ -6,9 +6,19 @@
   z-index: 100;
 }
 #add-button {
-  color: black;
+  color: #5784BA;
   width: 56px;
   height: 56px;
+    :hover {
+      color:#3c679c ;
+      opacity: 1;
+      transform: scale(1.2);
+    }
+
+    i {
+      font-size: 56px;
+      filter: drop-shadow(0 0 0.75rem rgba(0, 0, 0, 0.25));
+    }
 }
 
 .fab-container:hover {

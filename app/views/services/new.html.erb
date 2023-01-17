@@ -14,7 +14,7 @@
       <% end %>
 
       <%# input has data-target attribute for stimulus %>
-      <%= f.input :zone_id, class: "form-control", label: "Зона", :collection => Zone.all.map{|u| [u.title, u.id]}, input_html: {data: {form_target: 'zone', action: "change->form#input"}} %>
+      <%= f.input :zone_id, class: "form-control", label: "Процедура", :collection => Zone.all.map{|u| [u.title, u.id]}, input_html: {data: {form_target: 'zone', action: "change->form#input"}} %>
       <%= f.input :medicine_id, class: "form-control", label: "Препарат", :collection => Medicine.all.map{|u| [u.title, u.id]}, input_html: {data: {form_target: 'medicine'}} %>
 
       <%= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %>

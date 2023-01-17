@@ -1,16 +1,14 @@
-<div class="container">
-  <%= form_with url: clients_path, method: :get, class: "d-flex mb-3" do %>
+<div class="container mt-3">
+  <%= form_with url: clients_path, method: :get, class: "input-group mb-3" do %>
     <%= text_field_tag :query,
       params[:query],
-      class: "form-control",
-      placeholder: "Пошук пацієнта" %>
-    <%= submit_tag "Search", class: "btn btn-primary" %>
+      class: "form-control bg-white",
+      "aria-describedby": "button-addon1",
+      placeholder: "Пошук" %>
   <% end %>
 
-
-
   <div class="fab-container">
-    <%= link_to '<i class="fa-solid fa-circle-plus"></i>'.html_safe, new_client_path, style: "font-size:50px;", id:"add-button"%>
+    <%= link_to '<i class="bi bi-person-fill-add"></i>'.html_safe, new_client_path, style: "font-size:50px;", id:"add-button"%>
   </div>
 
   <div class="client-cards">
