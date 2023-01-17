@@ -12,13 +12,18 @@
       </div>
       <div class="offcanvas-body">
         <% url = "https://api.privatbank.ua/p24api/pubinfo?exchange&coursid=5"%>
-        <% user_serialized = URI.open(url).read%>
-        <% user = JSON.parse(user_serialized)%>
+        <% begin %>
+          <% user_serialized = URI.open(url).read%>
+        <% rescue => e %>
+          
+        <% else %>
+          <% user = JSON.parse(user_serialized)%>
 
-        <div >
-          <p ><%= "#{user[1]['ccy']}/#{user[1]['base_ccy']} - #{user[1]['buy'].to_f.round(4)}/#{user[1]['sale'].to_f.round(4)}"%> </p>
-          <p ><%= "#{user[0]['ccy']}/#{user[0]['base_ccy']} - #{user[0]['buy'].to_f.round(4)}/#{user[0]['sale'].to_f.round(4)}"%> </p>
-        </div>
+          <div >
+            <p ><%= "#{user[1]['ccy']}/#{user[1]['base_ccy']} - #{user[1]['buy'].to_f.round(4)}/#{user[1]['sale'].to_f.round(4)}"%> </p>
+            <p ><%= "#{user[0]['ccy']}/#{user[0]['base_ccy']} - #{user[0]['buy'].to_f.round(4)}/#{user[0]['sale'].to_f.round(4)}"%> </p>
+          </div>
+        <% end %>
 
         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
           <li class="nav-item">
@@ -26,7 +31,7 @@
           </li>
           <li class="nav-item">
             <%= link_to "Вийти", destroy_user_session_path, data: {turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "nav-link" %>
-  
+
 
           </li>
         </ul>
