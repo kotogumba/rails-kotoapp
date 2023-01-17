@@ -13,15 +13,15 @@
 
   <div class="index-card-group">
     <% @clients.each do |client| %>
-      <a href="/clients/<%=client.id%>" class="text-decoration-none">
-        <div class="index-card mb-3">
-          <% if client.photos.any? %>
-            <%= cl_image_tag client.photos.first.key, class: "index-card-img" %>
-          <% else %>
-            <%= image_tag "avatar.png", class: "index-card-img" %>
-          <% end %>
-          <p><%= client.first_name %> <%= client.last_name %></h5>
-        </div>
+      <a href="/clients/<%=client.id%>" class="text-decoration-none index-card mb-3">
+
+        <% if client.photos.any? %>
+          <%= cl_image_tag client.photos.first.key, class: "index-card-img" %>
+        <% else %>
+          <%= image_tag "avatar.png", class: "index-card-img" %>
+        <% end %>
+        <p><%= client.first_name %> <%= client.last_name %></p>
+
       </a>
     <% end %>
   </div>
